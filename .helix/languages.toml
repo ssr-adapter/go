@@ -1,0 +1,160 @@
+[language-server.biome]
+command = "biome"
+args = ["lsp-proxy"]
+
+[language-server.sqruff]
+command = "sqruff"
+args = ["lsp"]
+
+[language-server.typescript-language-server]
+command = "vtsls"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+
+[language-server.svelteserver.config.configuration.typescript]
+inlayHints.parameterNames.enabled = "all"
+inlayHints.parameterTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.functionLikeReturnTypes = true
+inlayHints.enumMemberValues.enabled = true
+preferences.importModuleSpecifier = "non-relative"
+preferences.importModuleSpecifierEnding = "js"
+suggest.completeFunctionCalls = true
+
+[language-server.typescript-language-server.config.typescript]
+inlayHints.parameterNames.enabled = "all"
+inlayHints.parameterTypes.enabled = true
+inlayHints.variableTypes.enabled = true
+inlayHints.propertyDeclarationTypes.enabled = true
+inlayHints.functionLikeReturnTypes = true
+inlayHints.enumMemberValues.enabled = true
+preferences.importModuleSpecifier = "non-relative"
+preferences.importModuleSpecifierEnding = "auto"
+suggest.completeFunctionCalls = true
+
+[language-server.yaml-language-server.config.yaml]
+customTags = ["!reference sequence", "!override sequence"]
+
+
+[[language]]
+name = "css"
+formatter = { command = "prettier", args = ["--parser", "css"] }
+auto-format = true
+
+# [[language]]
+# name = "protobuf"
+# formatter = { command = "buf", args = ["format", "--path"] }
+# auto-format = true
+
+[[language]]
+name = "html"
+formatter = { command = "prettier", args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "markdown"
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
+auto-format = true
+
+# [[language]]
+# name = "sql"
+# formatter = { command = "sqlformat", args = ["--reindent", "--indent_width", "2", "--keywords", "upper", "--identifiers", "lower", "-"] }
+
+# [[language]]
+# name = "sql"
+# formatter = { command = "sql-formatter" }
+# auto-format = true
+
+[[language]]
+name = "yaml"
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+auto-format = true
+
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+
+[[language]]
+name = "javascript"
+language-servers = [
+  # "typescript-language-server",
+  { name = "typescript-language-server", except-features = ["format"] },
+  "vscode-eslint-language-server",
+  "biome",
+]
+auto-format = true
+
+[[language]]
+name = "json"
+language-servers = [
+  # "vscode-json-language-server",
+  { name = "vscode-json-language-server", except-features = ["format"] },
+  "vscode-eslint-language-server",
+  "biome",
+]
+
+[[language]]
+name = "jsonc"
+  # "vscode-json-language-server",
+language-servers = [
+  { name = "vscode-json-language-server", except-features = [
+    "format",
+  ] },
+  "vscode-eslint-language-server",
+  "biome",
+]
+
+[[language]]
+name = "sql"
+language-servers = ["sqruff"]
+roots = [".sqruff"]
+auto-format = true
+
+[[language]]
+name = "svelte"
+language-servers = [
+  "svelteserver",
+  "vscode-eslint-language-server",
+  "tailwindcss-ls",
+]
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+  "tailwindcss-ls",
+]
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+  "tailwindcss-ls",
+]
+auto-format = true
+
+
+[[language]]
+name = "typescript"
+language-servers = [
+  # "typescript-language-server",
+  { name = "typescript-language-server", except-features = ["format"] },
+  "vscode-eslint-language-server",
+  "biome",
+]
+auto-format = true
